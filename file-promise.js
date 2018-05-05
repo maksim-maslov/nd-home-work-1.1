@@ -1,6 +1,7 @@
+const fs = require('fs');
+
 const read = path => {
   return new Promise((done, fail) => {
-    const fs = require('fs');
     const conf = {encoding: 'utf8'};
     fs.readFile(path, conf, (err, content) => {
       if (err) {
@@ -13,8 +14,7 @@ const read = path => {
 };
 
 const write = (path, data) => {
-  return new Promise((done, fail) => {
-    const fs = require('fs');
+  return new Promise((done, fail) => {    
     const conf = {encoding: 'utf8'};
     fs.writeFile(path, data, conf, err => {
       if (err) {
