@@ -1,14 +1,8 @@
 const fs = require('fs');
 
 module.exports = path => {
-  return new Promise((done, fail) => {
-    readDir(path)
-      .then(files => Promise.all(files.map((el, index) => getContent(el, index, path))))
-      .then(items=> done(items))
-      .catch(err => fail(err));
-  });
+  return readDir(path).then(files => Promise.all(files.map((el, index) => getContent(el, index, path))));
 };
-
 
 function readDir(path) {
   return new Promise((done, fail) => {    
